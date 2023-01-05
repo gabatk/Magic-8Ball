@@ -20,6 +20,8 @@ const shakeBall = () => {
 	setTimeout(() => {
 		ball.classList.remove('shake-animation');
 	}, 1000);
+	answerField.textContent = '';
+	errorField.textContent = '';
 	showError();
 };
 
@@ -29,8 +31,15 @@ const showError = () => {
 	} else {
 		if (!input.value.endsWith('?')) {
 			errorField.textContent = 'The question must end with "?"';
+		} else {
+			showAnswer();
 		}
 	}
+};
+
+const showAnswer = () => {
+	answerField.textContent =
+		ballAnswer[Math.floor(Math.random() * ballAnswer.length)];
 };
 
 ballImg.addEventListener('click', shakeBall);
