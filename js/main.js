@@ -1,5 +1,4 @@
 const ball = document.querySelector('.billard-ball');
-const ballImg = document.querySelector('.ball-img');
 const input = document.querySelector('.question-input');
 const errorField = document.querySelector('.error');
 const answerField = document.querySelector('.answer');
@@ -22,7 +21,7 @@ const shakeBall = () => {
 	}, 1000);
 	answerField.textContent = '';
 	errorField.textContent = '';
-	showError();
+	setTimeout(showError, 1000);
 };
 
 const showError = () => {
@@ -38,8 +37,8 @@ const showError = () => {
 };
 
 const showAnswer = () => {
-	answerField.textContent =
-		ballAnswer[Math.floor(Math.random() * ballAnswer.length)];
+	const answerText = ballAnswer[Math.floor(Math.random() * ballAnswer.length)];
+	answerField.innerHTML = `<span>Answer: </span> ${answerText}`;
 };
 
-ballImg.addEventListener('click', shakeBall);
+ball.addEventListener('click', shakeBall);
