@@ -23,4 +23,14 @@ const shakeBall = () => {
 	showError();
 };
 
+const showError = () => {
+	if (input.value === '') {
+		errorField.textContent = 'You have to ask a question';
+	} else {
+		if (!input.value.endsWith('?')) {
+			errorField.textContent = 'The question must end with "?"';
+		}
+	}
+};
+
 ballImg.addEventListener('click', shakeBall);
